@@ -1,12 +1,12 @@
-    --bg-color: #050508;
+    --bg-color: #030305;
     --text-color: #ffffff;
-    --accent-color: #8b5cf6;
-    --accent-gradient: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%);
-    --glass-bg: rgba(10, 10, 20, 0.6);
-    --glass-border: rgba(255, 255, 255, 0.15);
+    --accent-color: #a78bfa;
+    --accent-gradient: linear-gradient(135deg, #a78bfa 0%, #f472b6 100%);
+    --glass-bg: rgba(20, 20, 35, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.2);
     --font-main: 'Outfit', sans-serif;
     --font-accent: 'Space Grotesk', sans-serif;
-    --glow: 0 0 30px rgba(139, 92, 246, 0.4);
+    --glow: 0 0 30px rgba(167, 139, 250, 0.5);
 
 * {
     margin: 0;
@@ -17,8 +17,8 @@
 body {
     background-color: var(--bg-color);
     background-image: 
-        radial-gradient(at 0% 0%, rgba(124, 58, 237, 0.15) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.15) 0px, transparent 50%);
+        radial-gradient(at 0% 0%, rgba(167, 139, 250, 0.2) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(244, 114, 182, 0.2) 0px, transparent 50%);
     color: var(--text-color);
     font-family: var(--font-main);
     overflow: hidden;
@@ -48,6 +48,7 @@ body {
 
 .ui-overlay > * {
     pointer-events: auto;
+    color: var(--text-color);
 }
 
 header h1 {
