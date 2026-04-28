@@ -1,9 +1,9 @@
     --bg-color: #030305;
     --text-color: #ffffff;
-    --accent-color: #a78bfa;
-    --accent-gradient: linear-gradient(135deg, #a78bfa 0%, #f472b6 100%);
-    --glass-bg: rgba(20, 20, 35, 0.7);
-    --glass-border: rgba(255, 255, 255, 0.2);
+    --accent-color: #c084fc;
+    --accent-gradient: linear-gradient(135deg, #c084fc 0%, #6366f1 100%);
+    --glass-bg: rgba(15, 15, 25, 0.8);
+    --glass-border: rgba(255, 255, 255, 0.15);
     --font-main: 'Outfit', sans-serif;
     --font-accent: 'Space Grotesk', sans-serif;
     --glow: 0 0 30px rgba(167, 139, 250, 0.5);
@@ -56,18 +56,20 @@ body {
 
 header h1 {
     font-family: var(--font-accent);
-    font-size: 3rem;
-    font-weight: 700;
+    font-size: 3.5rem;
+    font-weight: 800;
     background: var(--accent-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    letter-spacing: -1px;
+    letter-spacing: -2px;
+    filter: drop-shadow(0 0 10px rgba(192, 132, 252, 0.3));
 }
 
 .subtitle {
     font-size: 1.1rem;
-    opacity: 0.7;
+    opacity: 0.9;
     margin-top: 0.5rem;
+    color: #ffffff !important;
 }
 
 .subtitle span {

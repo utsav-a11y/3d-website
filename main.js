@@ -21,32 +21,36 @@ controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 
 // --- Lighting ---
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.8); // Much brighter ambient light
+const ambientLight = new THREE.AmbientLight(0xffffff, 1.2); 
 scene.add(ambientLight);
 
-const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x444444, 1.0);
+const hemisphereLight = new THREE.HemisphereLight(0xc084fc, 0x6366f1, 1.5);
 scene.add(hemisphereLight);
 
-const mainLight = new THREE.PointLight(0xa78bfa, 10, 25); // Increased intensity
-mainLight.position.set(5, 5, 5);
+const mainLight = new THREE.PointLight(0xffffff, 20, 30);
+mainLight.position.set(5, 5, 8);
 scene.add(mainLight);
 
-const secondaryLight = new THREE.PointLight(0xf472b6, 10, 25); // Increased intensity
-secondaryLight.position.set(-5, -5, 5);
-scene.add(secondaryLight);
+const rimLight = new THREE.PointLight(0xc084fc, 15, 20);
+rimLight.position.set(-5, 2, -5);
+scene.add(rimLight);
 
-const cameraLight = new THREE.PointLight(0xffffff, 5, 15);
-camera.add(cameraLight); // Light moves with camera
+const cameraLight = new THREE.PointLight(0xffffff, 5, 10);
+camera.add(cameraLight);
 scene.add(camera);
 
-// --- Crazy Particle System ---
-const particlesCount = 4000;
+// --- Perfect Particle System ---
+const particlesCount = 3000;
 const positions = new Float32Array(particlesCount * 3);
 const colors = new Float32Array(particlesCount * 3);
 
 for(let i=0; i < particlesCount * 3; i++) {
-    positions[i] = (Math.random() - 0.5) * 20;
-    colors[i] = Math.random();
+    positions[i] = (Math.random() - 0.5) * 25;
+    const color = new THREE.Color();
+    color.setHSL(Math.random() * 0.2 + 0.7, 0.8, 0.8); // Purple to blue hues
+    colors[i*3] = color.r;
+    colors[i*3+1] = color.g;
+    colors[i*3+2] = color.b;
 }
 
 const particlesGeometry = new THREE.BufferGeometry();
@@ -54,31 +58,32 @@ particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 
 particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
 const particlesMaterial = new THREE.PointsMaterial({
-    size: 0.02,
+    size: 0.03,
     vertexColors: true,
     transparent: true,
-    opacity: 0.8,
+    opacity: 0.6,
     blending: THREE.AdditiveBlending
 });
 
 const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
 scene.add(particlesMesh);
 
-// --- Floating Nebula Spheres ---
-const nebulaCount = 8; // More nebulas
+// --- Nebula Clouds ---
+const nebulaCount = 12;
 const nebulas = [];
 for(let i=0; i < nebulaCount; i++) {
-    const geo = new THREE.SphereGeometry(Math.random() * 3 + 1, 32, 32);
+    const geo = new THREE.IcosahedronGeometry(Math.random() * 4 + 2, 1);
     const mat = new THREE.MeshBasicMaterial({
-        color: i % 2 === 0 ? 0xa78bfa : 0xf472b6,
+        color: i % 2 === 0 ? 0xc084fc : 0x6366f1,
         transparent: true,
-        opacity: 0.04, // Slightly more visible
+        opacity: 0.02,
+        wireframe: false
     });
     const nebula = new THREE.Mesh(geo, mat);
     nebula.position.set(
-        (Math.random() - 0.5) * 15,
-        (Math.random() - 0.5) * 15,
-        (Math.random() - 0.5) * 15
+        (Math.random() - 0.5) * 20,
+        (Math.random() - 0.5) * 20,
+        (Math.random() - 0.5) * 20
     );
     scene.add(nebula);
     nebulas.push(nebula);
@@ -93,14 +98,16 @@ const geometries = {
 };
 
 const material = new THREE.MeshPhysicalMaterial({
-    color: 0x8b5cf6, // Default neon purple
-    metalness: 0.6,
-    roughness: 0.2,
+    color: 0xc084fc,
+    metalness: 0.4,
+    roughness: 0.1,
     reflectivity: 1,
     clearcoat: 1.0,
-    clearcoatRoughness: 0.1,
-    emissive: 0x8b5cf6,
-    emissiveIntensity: 0.5
+    clearcoatRoughness: 0.05,
+    emissive: 0xc084fc,
+    emissiveIntensity: 0.3,
+    ior: 2.5,
+    thickness: 2.0
 });
 
 let mesh = new THREE.Mesh(geometries.torusKnot, material);
