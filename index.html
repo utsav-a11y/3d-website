@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Transformation | Three.js Showcase</title>
+    <meta name="description" content="A premium demonstration of 3D transformations using open-source Three.js software.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="canvas-container"></div>
+
+    <main class="ui-overlay">
+        <header>
+            <h1>3D Transformation</h1>
+            <p class="subtitle">Powered by Open Source Software: <span>Three.js</span></p>
+        </header>
+
+        <section class="info-panel glass">
+            <h2>Rotation Transformation</h2>
+            <p>Rotating an object in 3D space involves changing its orientation around the X, Y, and Z axes. In computer graphics, this is typically handled via <strong>Rotation Matrices</strong> or <strong>Quaternions</strong>.</p>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="label">X-Axis</span>
+                    <span id="rot-x" class="value">0.00</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">Y-Axis</span>
+                    <span id="rot-y" class="value">0.00</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">Z-Axis</span>
+                    <span id="rot-z" class="value">0.00</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="controls glass">
+            <h3>Transformation Controls</h3>
+            <div class="control-group">
+                <label for="speed-slider">Rotation Speed</label>
+                <input type="range" id="speed-slider" min="0" max="5" step="0.1" value="1">
+            </div>
+            <div class="control-group">
+                <label for="scale-slider">Scale</label>
+                <input type="range" id="scale-slider" min="0.5" max="2" step="0.1" value="1">
+            </div>
+            <button id="reset-btn">Reset Transformation</button>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 CGA Website | LLT Component Project</p>
+        </footer>
+    </main>
+
+    <!-- Three.js from CDN -->
+    <script async src="https://unpkg.com/es-module-shims@1.8.0/dist/es-module-shims.js"></script>
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+    <script type="module" src="main.js"></script>
+</body>
+</html>
