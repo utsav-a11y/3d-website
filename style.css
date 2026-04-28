@@ -100,9 +100,23 @@ header h1 {
 }
 
 .info-panel p {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    opacity: 0.8;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    opacity: 0.9;
+    margin-bottom: 0.8rem;
+}
+
+.info-details {
+    border-left: 2px solid var(--accent-color);
+    padding-left: 1rem;
+    margin: 1.2rem 0;
+    font-size: 0.82rem;
+    font-style: italic;
+    opacity: 0.85;
+}
+
+.info-details p {
+    margin-bottom: 0.5rem;
 }
 
 .stats {

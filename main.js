@@ -93,12 +93,14 @@ const geometries = {
 };
 
 const material = new THREE.MeshPhysicalMaterial({
-    color: 0xffffff,
-    metalness: 0.7, // Lowered metalness to catch more direct light
-    roughness: 0.2, // Increased roughness for better scattering
+    color: 0x8b5cf6, // Default neon purple
+    metalness: 0.6,
+    roughness: 0.2,
     reflectivity: 1,
     clearcoat: 1.0,
     clearcoatRoughness: 0.1,
+    emissive: 0x8b5cf6,
+    emissiveIntensity: 0.5
 });
 
 let mesh = new THREE.Mesh(geometries.torusKnot, material);
@@ -121,6 +123,9 @@ const colorPicker = document.getElementById('color-picker');
 const lightPicker = document.getElementById('light-picker');
 const resetBtn = document.getElementById('reset-btn');
 
+// Set initial color picker value
+colorPicker.value = '#8b5cf6';
+
 // --- Event Listeners ---
 objectSelect.addEventListener('change', (e) => {
     mesh.geometry.dispose();
@@ -129,11 +134,11 @@ objectSelect.addEventListener('change', (e) => {
 
 colorPicker.addEventListener('input', (e) => {
     material.color.set(e.target.value);
+    material.emissive.set(e.target.value);
 });
 
 lightPicker.addEventListener('input', (e) => {
     mainLight.color.set(e.target.value);
-    particlesMaterial.color.set(e.target.value);
 });
 
 speedSlider.addEventListener('input', (e) => {
@@ -152,10 +157,11 @@ resetBtn.addEventListener('click', () => {
     speedSlider.value = 1;
     scaleSlider.value = 1;
     mesh.scale.set(1, 1, 1);
-    material.color.set(0xffffff);
-    colorPicker.value = '#ffffff';
-    mainLight.color.set(0x7c3aed);
-    lightPicker.value = '#7c3aed';
+    material.color.set(0x8b5cf6);
+    material.emissive.set(0x8b5cf6);
+    colorPicker.value = '#8b5cf6';
+    mainLight.color.set(0xa78bfa);
+    lightPicker.value = '#a78bfa';
 });
 
 // --- Handle Resize ---
@@ -174,6 +180,10 @@ function animate() {
     // Auto-rotation (Core Transformation)
     mesh.rotation.x += 0.005 * state.rotationSpeed;
     mesh.rotation.y += 0.01 * state.rotationSpeed;
+
+    // Pulse effect
+    const pulse = (Math.sin(Date.now() * 0.002) + 1) / 2;
+    material.emissiveIntensity = 0.2 + pulse * 0.5;
 
     // Particle subtle movement
     particlesMesh.rotation.y += 0.0005;

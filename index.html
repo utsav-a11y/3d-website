@@ -20,20 +20,25 @@
         </header>
 
         <section class="info-panel glass">
-            <h2>Rotation Transformation</h2>
-            <p>Rotating an object in 3D space involves changing its orientation around the X, Y, and Z axes. In computer graphics, this is typically handled via <strong>Rotation Matrices</strong> or <strong>Quaternions</strong>.</p>
+            <h2>3D Space Transformations</h2>
+            <p>In Computer Graphics, transformations are mathematical operations that change an object's <strong>Position</strong>, <strong>Rotation</strong>, and <strong>Scale</strong> within a 3D coordinate system.</p>
             
+            <div class="info-details">
+                <p><strong>Rotation:</strong> Circular movement around an axis (X, Y, or Z). We use <em>Euler Angles</em> or <em>Quaternions</em> to calculate these orientations.</p>
+                <p><strong>Scaling:</strong> Changing the size of the object. A scale of 1.0 is the original size.</p>
+            </div>
+
             <div class="stats">
                 <div class="stat-item">
-                    <span class="label">X-Axis</span>
+                    <span class="label">Pitch (X)</span>
                     <span id="rot-x" class="value">0.00</span>
                 </div>
                 <div class="stat-item">
-                    <span class="label">Y-Axis</span>
+                    <span class="label">Yaw (Y)</span>
                     <span id="rot-y" class="value">0.00</span>
                 </div>
                 <div class="stat-item">
-                    <span class="label">Z-Axis</span>
+                    <span class="label">Roll (Z)</span>
                     <span id="rot-z" class="value">0.00</span>
                 </div>
             </div>
