@@ -41,14 +41,38 @@
 
         <section class="controls glass">
             <h3>Transformation Controls</h3>
+            
+            <div class="control-group">
+                <label for="object-select">Object Shape</label>
+                <select id="object-select">
+                    <option value="torusKnot">Torus Knot</option>
+                    <option value="cube">Cube</option>
+                    <option value="sphere">Sphere</option>
+                    <option value="dodecahedron">Dodecahedron</option>
+                </select>
+            </div>
+
             <div class="control-group">
                 <label for="speed-slider">Rotation Speed</label>
                 <input type="range" id="speed-slider" min="0" max="5" step="0.1" value="1">
             </div>
+
             <div class="control-group">
                 <label for="scale-slider">Scale</label>
                 <input type="range" id="scale-slider" min="0.5" max="2" step="0.1" value="1">
             </div>
+
+            <div class="control-row">
+                <div class="control-group half">
+                    <label for="color-picker">Object Color</label>
+                    <input type="color" id="color-picker" value="#ffffff">
+                </div>
+                <div class="control-group half">
+                    <label for="light-picker">Glow Color</label>
+                    <input type="color" id="light-picker" value="#6366f1">
+                </div>
+            </div>
+
             <button id="reset-btn">Reset Transformation</button>
         </section>
 
